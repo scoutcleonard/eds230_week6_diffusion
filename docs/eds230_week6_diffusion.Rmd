@@ -58,11 +58,11 @@ filled.contour(result$conc, xlab="Time", ylab="Distance")
 # changes diffusivity and other parameters particularly
 # diffusivity, dx and dt
 
-res1 = diff1(initialC = 30, # changed the initial concentration parameter from 10 mg/L to 30 mg/L
+res1 = diff1(initialC = 30, # changed the initial concentration from 10 mg/L to 30 mg/L
           nx = 10, 
           dx = 1,
           nt = 8,
-          dt = 3, # changed the seconds in each time interval parameter from 1 second to 3 seconds
+          dt = 3, # changed the seconds in each time interval from 1 second to 3 seconds
           D = 0.5, 
           area = 10)
 
