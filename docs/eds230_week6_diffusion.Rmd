@@ -1,8 +1,14 @@
 ---
 title: 'EDS 230: Week 6 Assignment: Diffusion'
-author: "Scout Leonard"
+author: "Juliet Cohen, Scout Leonard, Peter Menzies"
 date: "`r Sys.Date()`"
-output: html_document
+output: 
+  pdf_document:
+    toc: false
+    number_sections: yes
+header-includes:
+  - \setlength{\parindent}{1em}
+  - \usepackage{float}
 ---
 
 ```{r setup, include=FALSE}
@@ -52,7 +58,7 @@ filled.contour(result$conc, xlab="Time", ylab="Distance")
 # changes diffusivity and other parameters particularly
 # diffusivity, dx and dt
 
-res=diff1(initialC = 30, # changed the initial concentration parameter from 10 mg/L to 30 mg/L
+res1 = diff1(initialC = 30, # changed the initial concentration parameter from 10 mg/L to 30 mg/L
           nx = 10, 
           dx = 1,
           nt = 8,
@@ -75,7 +81,40 @@ res=diff1(initialC = 30, # changed the initial concentration parameter from 10 m
 # nt = # of discrete time intervals
 # dt = seconds in each time interval
 
-filled.contour(res$conc, xlab="Time", ylab="Distance")
+filled.contour(res1$conc, xlab="Time", ylab="Distance")
+
+# we can also see how much material moved from place to place each time step
+#filled.contour(res$qin, xlab="Time", ylab="Distance")
+```
+
+```{r}
+# changes diffusivity and other parameters particularly
+# diffusivity, dx and dt
+
+res2 = diff1(initialC = 10, 
+               nx = 2, #decreased the length of each segment from 10 m to 2 m
+               dx = 1, 
+               nt = 6, #decreased the number of time intervals from 8 to 6
+               dt = 1, 
+               D = 0.5, 
+               area = 10)
+
+# previous:
+# result = diff1(initialC = 10, 
+               # nx = 10, 
+               # dx = 1, 
+               # nt = 8, 
+               # dt = 1, 
+               # D = 0.5, 
+               # area = 10)
+
+# initialC = initial concentration (mg/L)
+# nx = number of discrete segments
+# dx = length of each segment (m)
+# nt = # of discrete time intervals
+# dt = seconds in each time interval
+
+filled.contour(res2$conc, xlab="Time", ylab="Distance")
 
 # we can also see how much material moved from place to place each time step
 #filled.contour(res$qin, xlab="Time", ylab="Distance")
